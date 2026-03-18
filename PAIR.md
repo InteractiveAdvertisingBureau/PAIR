@@ -1,4 +1,4 @@
-# PAIR (Publisher Advertiser Identity Reconciliation
+# PAIR (Publisher Advertiser Identity Reconciliation)
 
 ## About this document
 
@@ -94,39 +94,39 @@ THE STANDARDS, THE SPECIFICATIONS, THE MEASUREMENT GUIDELINES, AND ANY OTHER MAT
  
 ## Table of Contents
 
-- About this document	
-- Glossary	
-- Overview	
-- Why use PAIR	
-- How PAIR works	
-- PAIR Process	
-- Base64 Encoding Publisher Identifiers	
-- PAIR Considerations: Security, Privacy, Scale	
-- Design Goals	
-- Security Considerations	
-- Leaked Keys	
-- Security of commutative ciphers	
-- Commutative Cipher Recommendations	
-- Data Clean Room Compromises	
-- Privacy considerations	
-- Single bad actor cases	
-- Collusion cases	
-- Scale considerations	
-- PAIR Protocol Implementation	
-- Canonical representation of Common Match keys	
-- Single Data Clean Room
-- Single Data Clean Room, TEE	
-- Considerations for using a TEE	
-- Two Data Clean Rooms (PAIR interoperability)	
-- Reference Implementation	
-- Activating PAIR campaign	
-- Prebid Module for Publishers	
-- Prerequisites and Requirements	
-- Publishers	
-- Advertiser	
-- Data Clean Room (DCR)	
-- Demand Side Platform (DSP)	
-- Supply Side Platform (SSP)	
+- [About this document](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#about-this-document)
+- [Glossary](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#glossary)	
+- [Overview](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#overview)
+  - [Why use PAIR](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#why-use-pair)	
+- [How PAIR works](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#how-pair-works)
+  - [PAIR Process	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#pair-process)
+    - [Base64 Encoding Publisher Identifiers	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#base64-encoding-publisher-identifiers)
+- [PAIR Considerations: Security, Privacy, Scale	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#pair-considerations-security-privacy-scale)
+  - [Design Goals	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#design-goals)
+  - [Security Considerations](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#security-considerations)	
+    - [Leaked Keys](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#leaked-keys)	
+    - [Security of commutative ciphers](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#security-of-commutative-ciphers)	
+    - [Commutative Cipher Recommendations	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#commutative-cipher-recommendations)
+    - [Data Clean Room Compromises](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#data-clean-room-compromises)	
+  - [Privacy considerations	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#privacy-considerations)
+    - [Single bad actor cases](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#single-bad-actor-cases)	
+    - [Collusion cases](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#collusion-cases)	
+  - [Scale considerations	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#scale-considerations)
+- [PAIR Protocol Implementation](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#pair-protocol-implementation)	
+  - [Canonical representation of Common Match keys	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#canonical-representation-of-common-match-keys)
+  - [Single Data Clean Room](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#single-data-clean-room)
+  - [Single Data Clean Room, TEE](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#single-data-clean-room-tee)
+    - [Considerations for using a TEE](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#considerations-for-using-a-tee)	
+  - [Two Data Clean Rooms (PAIR interoperability)](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#two-data-clean-rooms-pair-interoperability)	
+  - [Reference Implementation](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#reference-implementation)
+- [Activating PAIR campaign	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#activating-pair-campaign)
+  - [Prebid Module for Publishers](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#prebid-module-for-publishers)	
+- [Prerequisites and Requirements	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#prerequisites-and-requirements)
+  - [Publishers](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#publishers)	
+  - [Advertiser	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#advertiser)
+  - [Data Clean Room (DCR)](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#data-clean-room-dcr)	
+  - [Demand Side Platform (DSP)	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#demand-side-platform-dsp)
+  - [Supply Side Platform (SSP)	](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#supply-side-platform-ssp)
  
 ## Overview
 
@@ -188,7 +188,9 @@ Below is the brief outline of the protocol, roles of Advertiser, Publishers, SSP
 
 - Advertiser and Publisher load their data sets in the DCR environment
 - Advertiser and Publisher have access to their data only
-- Advertiser selects the publishers it wants to ‘PAIR’ its data	
+- Advertiser selects the publishers it wants to ‘PAIR’ its data
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/8a60760d5d8f9490c91a88d0954518e621462c76/assets/Step%201%3A%20Setup.png)
  
 **Step 2: Encryption Key (A) (P) generation**
 
@@ -197,48 +199,66 @@ Below is the brief outline of the protocol, roles of Advertiser, Publishers, SSP
 - Publisher maintains one identifier *KsKp* per user
 - Advertisers maintain multiple identifiers per user - one for each publisher PAIR
 - It is the role of the DCR and DSP manage this complexity
-- *Ka* and *Kp* remain constant throughout the matching process	
+- *Ka* and *Kp* remain constant throughout the matching process
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/8b4fde59e1960b307979f148fb03560e1e56523d/assets/Step%202%3A%20Encryption%20Key.png)
  
 **Step 3: Generate Advertiser and Publisher encrypted identifiers**
 
 - Data sets are enhanced with *AdvPubID* - a unique value that identifies a specific advertiser publisher PAIR relationship
-- Advertiser and Publisher keys are applied	
+- Advertiser and Publisher keys are applied
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/8a96a2546e54f6b1b055cfd238dfc40260fda1c4/assets/Step%203%3A%20Generate%20Advertiser%20and%20Publishers%20encrypted%20identifiers.png)
  
 **Step 4: Share encrypted lists**
 
-- Advertiser and Publisher data instances share encrypted lists with each other.	
+- Advertiser and Publisher data instances share encrypted lists with each other.
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/16f900a731d4310b9eb1fcf1bcde246a0880d5e6/assets/Step%204%3A%20Share%20encrypted%20lists.png)
 
  **Step 5: DCR generates the PAIR ID**
  
 - Applies Advertiser key *Ka* on Publisher data set
 - Applies Publisher key *Kp* on Advertiser data set
-- Triple encrypted *KsKaKp* is the PAIR ID. It is unique for each row of the publisher advertiser match. PAIR ID never leaves the DCR	
+- Triple encrypted *KsKaKp* is the PAIR ID. It is unique for each row of the publisher advertiser match. PAIR ID never leaves the DCR
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/da4708d2aa62c0589206db9fd819d2ec593b99e8/assets/Step%205%3A%20DCR%20generates%20the%20PAIR%20ID.png)
 
 **Step 6: PAIR Lists shared**
 
 - Advertiser and Publisher DCR instances share PAIR list with each other
-- The list contains PAIR ID and *AdvPubID*	
+- The list contains PAIR ID and *AdvPubID*
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/44f741290397070a9f9d568981b15e56b7e33ba0/assets/Step%206%3A%20PAIR%20Lists%20shared.png)
  
 **Step 6A: DCR generates matched identifiers**
 
 - Advertiser DCR instance decrypts using *Ka* to create a list Publisher Identifiers *KsKp*	
- 
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/f691470d3ee3d36019a3c2bf833b683a5a2dc68e/assets/Step%206A%3A%20DCR%20generates%20matched%20identifiers.png)
+
 **Step 7: Match Rates**
 
 - DCR shares the match rates with Advertiser and Publisher
 - Match rates are aggregates and no user level data is shared	
- 
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/e143fbde25a8f23cc7db739f643db8e22646a3ca/assets/Step%207%3A%20Match%20Rates.png)
+
 **Step 8: Publisher Identifiers shared with DSP**
 
 - Advertiser DCR instance shares Base64-encoded Publisher Identifiers *KsKp* with the DSP. No keys are shared
 - DSP can access the list from DCR with appropriate advertiser permissions
 - DSP cannot download the list from DCR - only access based on permissions	
+
+ ![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/6c08a61b3143046b2062cfdb0b173bc24f2db334/assets/Step%208%3A%20Publisher%20Identifiers%20shared%20with%20DSP.png)
  
 **Step 9: Programmatic Activation**
 - Publisher uses match rates in step 7 to enhance their user id with Publisher Identifier (Base64-encoded encrypted *KsKp*)
 - Publisher sends the Publisher Identifiers (Base64-encoded encrypted KsKp) in bid request
 - Advertisers can pull PAIR lists for their campaigns and provide access to DSP
 - DSP can look up and match publisher ID for bid decisioning
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/b4aed6096935e8cd4ddedd4beb2dc5e280f2a279/assets/Step%209%3A%20Programmatic%20Activation.png)
 
 #### Base64 Encoding Publisher Identifiers
 
@@ -268,7 +288,7 @@ Following are some security considerations and suggested approaches and reasons 
  
 #### Leaked Keys
 
-Design goals 1 and 2 require that no participant obtain the personal data of consumers in clear text and that a participant should not learn the information of consumers not in their dataset . In order to assure this, it is necessary to mitigate the probability of encryption keys being leaked:
+[Design goals](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#design-goals) 1 and 2 require that no participant obtain the personal data of consumers in clear text and that a participant should not learn the information of consumers not in their dataset . In order to assure this, it is necessary to mitigate the probability of encryption keys being leaked:
 
 - Using a 30-day rotation of *Ks* (and/or *Kp*), the worst case scenario is that a complete set of leaked keys (*Ks*, *Kp*) can only compromise less than 30 days of personal data that an Advertiser has attempted to match with a specific Publisher. More frequent rotations limit the amount of data that can be exposed in the event of a compromise.
 - There are implementation options where *Ks* is owned by a publisher/advertiser pair. In such a case, 2 keystores would need to be compromised to expose cleartext data.
@@ -355,7 +375,7 @@ Each party’s input match keys must be clearly delimited in the input data. In 
 
 |Match Key Type |	Normalization & Encoding|	Example|
 |---|---|---|
-|Email address	|(i)	ASCII characters converted to lowercase (ii)	SHA256 hashed(iii)	No hashing salt	|b4c9a289323b21a01c3e940f150eb9b8c542587f1abfd8f0e1cc1ff c5e475514|
+|Email address	|(i)	ASCII characters converted to lowercase (ii)	SHA256 hashed (iii)	No hashing salt	|b4c9a289323b21a01c3e940f150eb9b8c542587f1abfd8f0e1cc1ff c5e475514|
 |Phone number |	(i)	E.164 normalized (maximum of 15 digits)(ii)	No spaces, hyphens, parentheses, or other special characters (iii)	SHA256 hashed (iv)	No hashing salt	|c1d3756a586b6f0d419b3e3d1b328674fbc6c4b842367ee7ded7 80390fc548ae|
 
 In addition to the above two commonly used PII match keys, participants may want to use other forms of user identification methods like ID solutions provided by commercial ID providers. In such cases the recommendation is to agree on a canonical form of the ID value so that it is a fixed length normalized value before being used as a match key.
@@ -363,36 +383,41 @@ In addition to the above two commonly used PII match keys, participants may want
 ### Single Data Clean Room
 
 This is a practical implementation where the keys are managed by the DCR. In such a case, the DCR administrators need to be trusted. Assuming offline workflow and single Advertiser / single Publisher to focus for simplicity, the PAIR protocol works as follows:
- 
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/3e7dab5ce76f921b00c8c3aa2b87343cf9dccc75/assets/DCR%20Practical%20Implementation.png)
+
 1)	**Key generation**
-  a)	DCR instance generates *Ks*. No other party knows *Ks*. *Ks* is unique for the publisher and is rotated every 30 days.
-  b)	DCR generates *Ka*. *Ka* is rotated every 180 days.
-  c)	DCR generates *Kp*. *Kp* is rotated every 180 days.
+ 
+  - a)	DCR instance generates *Ks*. No other party knows *Ks*. *Ks* is unique for the publisher and is rotated every 30 days.
+  - b)	DCR generates *Ka*. *Ka* is rotated every 180 days.
+  - c)	DCR generates *Kp*. *Kp* is rotated every 180 days.
 
 There are variations where *Ks* can be kept secret from the DCR administrators or introduce the use of attestable confidential compute instances to isolate and seal the cleartext PII. It is advised that *Ks* and *Kp* remain constant for some duration (e.g., 30 days) to limit the number of unique identity spaces generated by this protocol.
 
 2)	**Data sharing**
-  a)	Advertiser uploads its raw ID list (PII used as join keys) to the DCR using a secure channel (TLS/SSL).
-  b)	DCR canonicalizes Advertiser’s PII, hashes using *Ks* and encrypts using *Ka*, and adds a field `AdvPubID*` to each row. We refer to the *KsKa*-encrypted list as the “Advertiser identifiers”.
+  - a)	Advertiser uploads its raw ID list (PII used as join keys) to the DCR using a secure channel (TLS/SSL).
+  - b)	DCR canonicalizes Advertiser’s PII, hashes using *Ks* and encrypts using *Ka*, and adds a field `AdvPubID*` to each row. We refer to the *KsKa*-encrypted list as the “Advertiser identifiers”.
  
 *AdPubID is an optional arbitrary index that identifies a specific Advertiser-Publisher relationship. The AdvPubID is the same for all rows in a match and can be the same for multiple match operations.*
 
-  c)	Publisher uploads its raw ID list (PII used as join keys) to the DCR using a secure channel (TLS/SSL).
-  d)	DCR canonicalizes Publisher’s PII, hashes using *Ks* and encrypts using *Kp*, and adds a field AdvPubID to each row. We refer to the Base64-encoded *KsKp*-encrypted list as the “Publisher identifiers”.
-  e)	DCR encrypts Publisher list using *Ka*
-  f)	DCR encrypts Advertiser list using *Kp*
+  - c)	Publisher uploads its raw ID list (PII used as join keys) to the DCR using a secure channel (TLS/SSL).
+  - d)	DCR canonicalizes Publisher’s PII, hashes using *Ks* and encrypts using *Kp*, and adds a field AdvPubID to each row. We refer to the Base64-encoded *KsKp*-encrypted list as the “Publisher identifiers”.
+  - e)	DCR encrypts Publisher list using *Ka*
+  - f)	DCR encrypts Advertiser list using *Kp*
 
 *At this point both Publisher and Advertiser lists are hashed and encrypted by all three keys (Ks, Ka, Kp) and matching would be possible because of the commutative property of the encryption schema. We call these triple-keyed IDs “PAIR IDs”.*
 
 3)	**Matching and output**
-  a)	Publisher DCR matches of PAIR IDs from the Advertiser and Publisher lists
+  - a)	Publisher DCR matches of PAIR IDs from the Advertiser and Publisher lists
   *At this point Publisher DCR has a list of PAIR IDs matched, and an index that tracks which Advertiser-Publisher pair these matches correspond to.*
-  b)	The DCR generates three outputs:
-    i)	**DCR to Publisher**: Tabular list with two columns, (1) raw PII (e.g., email), and (2) Publisher Identifiers (Base64-encoded encrypted KsKp). This list contains all the individuals provided by the Publisher, not just matches.
-      (1)	When the *Ks* and/or *Kp* are rotated, the DCR will generate the new Publisher Identifiers, it should send both the new and all the old IDs generated up to t-30 days so every ID is available in the system for 30 days.
+  - b)	The DCR generates three outputs:
+    - i)	**DCR to Publisher**: Tabular list with two columns, (1) raw PII (e.g., email), and (2) Publisher Identifiers (Base64-encoded encrypted KsKp). This list contains all the individuals provided by the Publisher, not just matches.
+      - (1)	When the *Ks* and/or *Kp* are rotated, the DCR will generate the new Publisher Identifiers, it should send both the new and all the old IDs generated up to t-30 days so every ID is available in the system for 30 days.
+  
   *Note: The DCR may share the Publisher Identifiers (Base64-encoded encrypted KsKp)at any time (or at such times which makes the operation most efficient) in the process as long as all steps in the process are guaranteed and privacy permission of the user can be preserved.*
-    ii)	**DCR to Advertiser and Publisher**: Aggregate match rates for each party. Publisher and advertiser will receive information on the percentage of their respective data sets that matched. For e.g. publisher will know that 50% of their data set matched and advertiser will know 30% of their data set matched for a specific matching operation.
-   iii)	**DCR to DSP**: List of matched Publisher Identifiers (Base64-encoded encrypted KsKp)
+    
+   - ii)	**DCR to Advertiser and Publisher**: Aggregate match rates for each party. Publisher and advertiser will receive information on the percentage of their respective data sets that matched. For e.g. publisher will know that 50% of their data set matched and advertiser will know 30% of their data set matched for a specific matching operation.
+   - iii)	**DCR to DSP**: List of matched Publisher Identifiers (Base64-encoded encrypted KsKp)
    *The Advertiser DCR to DSP output above can be used by DSP to generate the offline Advertisers and Publishers match rates.*
    *Specific use cases are not described in this document, as the intention is to focus discussion on technical aspects of PAIR.*
 
@@ -410,6 +435,8 @@ For cases where we need additional trust in the DCR, a Trusted Execution Environ
 - The DCR sends the PubID of matched PIIs to the DSP and sends the match rates to the advertiser and publisher.
 
 The PII data is owned by the advertiser and publisher respectively. It is always encrypted in transit and at rest. Only the TEE running specific hardware and binary can decrypt the data. The business logic is written in such a way that neither advertiser or publisher can do differential attacks on the system. Even the administrator of the DCR TEE cannot look into the memory or exfiltrate the data out of the TEE. The matched output PubIDs can only be sent to a well known endpoint of a designated DSP. Neither publisher nor advertiser gets the matched PubIDs.
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/5a77baec769e3dc28a9db24c4ef0553567a95608/assets/Clean%20Room%20TEE.png)
 
 #### Considerations for using a TEE
 
@@ -430,44 +457,46 @@ While TEEs support large scale computation, there are some considerations to ens
 As an industry standard, it will be required that PAIR operate in a marketplace ecosystem, where it is possible that the publisher dataset and advertiser datasets are housed in different DCRs. Below we outline a protocol to exchange and match only encrypted data such that data is not exposed to the partner DCR. The implementation dependent security and privacy data guarantees of your local DCR remain intact, and the other DCR is unable to see cleartext data when using PAIR.
 
 In this example, the advertiser shares the raw first party dataset ID list with the AC (Advertiser DCR) and the publisher shares the raw first party dataset ID list with the PC (Publisher DCR).
- 
-Note that a dual DCR approach is also possible through TEE implementations as noted here.
+
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/9d0c187e48c9ebd899a2ee6838af5029620ccdd7/assets/Advertiser%20DCR%20and%20Publisher%20DCR.png)
+
+Note that a dual DCR approach is also possible through TEE implementations as noted [here](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#considerations-for-using-a-tee).
 
 1)	**Key generation**
-  a)	PC instance generates and shares *Ks* with the AC. No other party knows *Ks*. *Ks* is unique for every publisher and is rotated every 30 days. Note that *Ks* stays the same for every partner that the publisher works with.
-  b)	AC generates *Ka*. *Ka* is rotated every 180 days.
-  c)	PC generates *Kp*. *Kp* is rotated every 180 days.
+  - a)	PC instance generates and shares *Ks* with the AC. No other party knows *Ks*. *Ks* is unique for every publisher and is rotated every 30 days. Note that *Ks* stays the same for every partner that the publisher works with.
+  - b)	AC generates *Ka*. *Ka* is rotated every 180 days.
+  - c)	PC generates *Kp*. *Kp* is rotated every 180 days.
 
 2)	**Data sharing**
-  a)	Upload raw advertiser data
-    i)	Advertiser uploads raw Advertiser ID list to AC (PII used as join keys) using TLS/SSL
-    ii)	AC canonicalizes Advertiser’s PII, hashes using Ks and encrypts using *Ka*, and adds a field `AdvPubID*` to each row. We refer to the *KsKa*-encrypted list as the “Advertiser identifiers”.
+  - a)	Upload raw advertiser data
+    - i)	Advertiser uploads raw Advertiser ID list to AC (PII used as join keys) using TLS/SSL
+    - ii)	AC canonicalizes Advertiser’s PII, hashes using Ks and encrypts using *Ka*, and adds a field `AdvPubID*` to each row. We refer to the *KsKa*-encrypted list as the “Advertiser identifiers”.
 
 *AdvPubID is an optional arbitrary index that identifies a specific Advertiser-Publisher relationship. The AdvPubID is the same for all rows in a match and can be the same for multiple match operations.*
  
-  b)	Upload raw publisher data
-    i)	Publisher uploads raw Publisher ID list to PC (PII used as join keys) using TLS/SSL.
-    ii)	PC canonicalizes Publisher’s PII, hashes using *Ks* and encrypts using *Kp*, and adds a field AdvPubID to each row. We refer to the KsKp-encrypted list as the “Publisher identifiers”.
-  c)	AC shares *KsKa*-encrypted Advertiser list w/ AdvPubID with PC.
-  d)	PC shares *KsKp*-encrypted Publisher list w/AdvPubID with AC
-  e)	AC encrypts list from 2.d using *Ka* and shuffles the ordering of the list
-  f)	PC encrypts list from 2.c using *Kp* and shuffles the order of the IDs in the list
+  - b)	Upload raw publisher data
+    - i)	Publisher uploads raw Publisher ID list to PC (PII used as join keys) using TLS/SSL.
+    - ii)	PC canonicalizes Publisher’s PII, hashes using *Ks* and encrypts using *Kp*, and adds a field AdvPubID to each row. We refer to the KsKp-encrypted list as the “Publisher identifiers”.
+  - c)	AC shares *KsKa*-encrypted Advertiser list w/ AdvPubID with PC.
+  - d)	PC shares *KsKp*-encrypted Publisher list w/AdvPubID with AC
+  - e)	AC encrypts list from 2.d using *Ka* and shuffles the ordering of the list
+  - f)	PC encrypts list from 2.c using *Kp* and shuffles the order of the IDs in the list
 
 *At this point both Publisher and Advertiser lists are encrypted with all three keys (Ks, Ka, Kp) and matching is possible because of the commutative property of the encryption schema. We call these triple-encrypted IDs “PAIR IDs”.*
 
-  g)	PC shares the shuffled list that contains all AdvPubIDs and PAIR IDs with AC (i.e., list created 2.f).
-  h)	AC shares the whole PAIR ID list with PC (i.e., list created in 2.e)
-  i)	*At this point the PC and AC have two lists of PAIR IDs, one from the Advertiser and one from the Publisher, that can be matched.*
+  - g)	PC shares the shuffled list that contains all AdvPubIDs and PAIR IDs with AC (i.e., list created 2.f).
+  - h)	AC shares the whole PAIR ID list with PC (i.e., list created in 2.e)
+  - i)	*At this point the PC and AC have two lists of PAIR IDs, one from the Advertiser and one from the Publisher, that can be matched.*
 
 3)	**Matching and output**
 
-  a)	PC matches PAIR IDs from steps 2.f and 2.g
-  b)	AC matches PAIR IDs from from steps 2.e and 2.h *At this point, AC and PC have a list of PAIR IDs matched, and an index that tracks which Advertiser-Publisher pair these matches correspond to.*
-  c)	**PC to Publisher**: Tabular list with two columns, (1) raw PII (e.g., email), and (2) Publisher Identifiers (Base64-encoded encrypted KsKp). This list contains all the Publisher PII, not just matches.
-    i)	When the Ks and/or Kp are rotated, the PC will generate the new Publisher Identifiers, it should send both the new and all the old IDs generated up to t-30 days so every ID is in the system for 30 days.
+  - a)	PC matches PAIR IDs from steps 2.f and 2.g
+  - b)	AC matches PAIR IDs from from steps 2.e and 2.h *At this point, AC and PC have a list of PAIR IDs matched, and an index that tracks which Advertiser-Publisher pair these matches correspond to.*
+  - c)	**PC to Publisher**: Tabular list with two columns, (1) raw PII (e.g., email), and (2) Publisher Identifiers (Base64-encoded encrypted KsKp). This list contains all the Publisher PII, not just matches.
+    - i)	When the Ks and/or Kp are rotated, the PC will generate the new Publisher Identifiers, it should send both the new and all the old IDs generated up to t-30 days so every ID is in the system for 30 days.
     *Note: The DCR may share the Base64-encoded KsKp-encrypted Publisher Identifiers at any time (or at such times which makes the operation most efficient) in the process as long as all steps in the process are guaranteed and privacy permission of the user can be preserved.*
-  d)	AC decrypts matched IDs in 3b by removing the Ka key to get KsKp IDs, and then Base64 encodes them (Publisher Identifiers). This is done without accessing the Kp key and without access to any unencrypted PII from the publisher or publisher DCR.
-  e)	**AC to DSP**: List of matched Publisher Identifiers (Base64-encoded encrypted KsKp)
+  - d)	AC decrypts matched IDs in 3b by removing the Ka key to get KsKp IDs, and then Base64 encodes them (Publisher Identifiers). This is done without accessing the Kp key and without access to any unencrypted PII from the publisher or publisher DCR.
+  - e)	**AC to DSP**: List of matched Publisher Identifiers (Base64-encoded encrypted KsKp)
 
 Both **PC and AC** also send aggregate match rates for each party to their respective clients. Publisher and advertiser will receive information on the percentage of their respective data sets that matched. For e.g. publisher will know that 50% of their data set matched and advertiser will know 30% of their data set matched for a specific matching operation.
 
@@ -477,13 +506,21 @@ IAB Tech lab will maintain reference implementations for PAIR on its open source
 
 We invite the community to contribute code libraries to the reference implementations and build a reference implementation that can help with industrywide adoption
  
-### Activating PAIR campaign
+### Reference Implementation 
+
+IAB Tech Lab will maintain reference implementations for PAIR on its open source repositories project here: [https://github.com/iabtechlab/pair](https://github.com/iabtechlab/pair)
+
+We invite the community to contribute code libraries to the reference implementations and build a reference implementation that can help with industrywide adoption.
+
+## Activating PAIR campaign
 
 So far we have described how to create PAIR lists using a DCR. In this section we describe how to activate the PAIR list for campaign execution.
 
 In both scenarios - single DCR and two DCR scenarios, publisher DCR is responsible for providing the Publisher Identifiers list to the publisher for inclusion in ad requests. In a single DCR scenario- both the advertiser and publisher DCR is the same entity.
 
-- The Advertiser DCR provides the matched Publisher Identifiers (Base64-encoded encrypted KsKp) list in a campaign to the Advertiser’s DSP, as explained in the PAIR protocol implementation section above.
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/9c9b54cd8b38d10bcbd5f3c4a585fd02a11b22e0/assets/Activating%20PAIR%20Campaign.png)
+
+- The Advertiser DCR provides the matched Publisher Identifiers (Base64-encoded encrypted KsKp) list in a campaign to the Advertiser’s DSP, as explained in the [PAIR protocol implementation](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#pair-protocol-implementation) section above.
 - The Publisher DCR provides all of the Publisher Identifiers (Base64-encoded encrypted KsKp) list to the publisher. Publisher keeps a match of pair list to raw PII or any other unique first party identifier for e.g. first party cookie.
 - When a user visits a Publisher site, the Publisher does a high speed lookup of the raw PII to the Publisher Identifiers and inserts the matching IDs in the bid request to SSP. The Publisher can use the PAIR prebid module.
 - The Publisher ensures that the Publisher Identifiers (Base64-encoded encrypted KsKp) are inserted within the [Open RTB eids Object](https://github.com/InteractiveAdvertisingBureau/openrtb2.x/blob/main/2.6.md#3227---object-eid-) as follows:
@@ -574,8 +611,6 @@ pbjs.setConfig({
 Please consult with your clean room vendor to ensure they support the open pair prebid module and what storage key to use.
 
 Note that the open pair module defines atype=3 and source=pair-protocol.com. Additionally, publishers have the option of defining inserter and matcher which are then passed to bidders. You can find more information about these fields here: [https://github.com/InteractiveAdvertisingBureau/openrtb2.x/blob/main/2.6.md#3227---object-eid-](https://github.com/InteractiveAdvertisingBureau/openrtb2.x/blob/main/2.6.md#3227---object-eid-)
- 
-
 
 You can find the source code of the open pair module here: [https://github.com/prebid/Prebid.js/blob/master/modules/openPairIdSystem.js](https://github.com/prebid/Prebid.js/blob/master/modules/openPairIdSystem.js)
 
@@ -583,7 +618,7 @@ Those using the older version developed by Google (available at [https://docs.pr
  
 ### Prerequisites and Requirements
 
-PAIR is a privacy first protocol and given the security and privacy considerations and design goals, it is necessary to install guardrails that ensure the core objectives. The implementers of the protocol must take measures to ensure that the objectives of the protocol are met while activating campaigns with user’s personal information. In this section we highlight key prerequisites and requirements for each entity that participates in the PAIR protocol execution.
+PAIR is a privacy first protocol and given the [security](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#security-considerations) and [privacy](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#privacy-considerations) considerations and [design goals](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#design-goals), it is necessary to install guardrails that ensure the core objectives. The implementers of the protocol must take measures to ensure that the objectives of the protocol are met while activating campaigns with user’s personal information. In this section we highlight key prerequisites and requirements for each entity that participates in the PAIR protocol execution.
 
 #### Publishers
 
@@ -609,17 +644,17 @@ The DCR carries out the bulk of the protocol steps that include encryption, stor
 2)	Require that DSPs accepting PAIR IDs attest that they will not accept raw PII data accompanying PAIR IDs, use the PAIR ID outside of the stated context, or use it to build profiles.
 3)	*Ks* can also be generated using a standard SHA256 HMAC operation.
 4)	Elliptic curve ciphers can be used for generation of Ka and Kp. DCRs can use [open source ECcipher](https://github.com/google/private-join-and-compute/blob/master/java/com/google/privacy/private_join_and_compute/encryption/commutative/EcCommutativeCipher.java) (Java and C++ versions available) or [https://ristretto.group/print.html](https://ristretto.group/print.html) to generate *Kp* and *Ka*.
-a)	Key advantage with [open source ECcipher](https://github.com/google/private-join-and-compute/blob/master/java/com/google/privacy/private_join_and_compute/encryption/commutative/EcCommutativeCipher.java) is that it is a NIST approved cipher but is also old and has inferior performance characteristics compared to newer ciphers like those from [https://ristretto.group/print.html](https://ristretto.group/print.html)
-b)	More information on understanding and selecting the right cipher is available here: [https://safecurves.cr.yp.to/](https://safecurves.cr.yp.to/)
-5)	Follow (without deviation) steps outlined in the detailed protocol.
+  - a)	Key advantage with [open source ECcipher](https://github.com/google/private-join-and-compute/blob/master/java/com/google/privacy/private_join_and_compute/encryption/commutative/EcCommutativeCipher.java) is that it is a NIST approved cipher but is also old and has inferior performance characteristics compared to newer ciphers like those from [https://ristretto.group/print.html](https://ristretto.group/print.html)
+  - b)	More information on understanding and selecting the right cipher is available here: [https://safecurves.cr.yp.to/](https://safecurves.cr.yp.to/)
+5)	Follow (without deviation) [steps outlined](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/main/PAIR.md#pair-protocol-implementation) in the detailed protocol.
 6)	Never let triple encrypted identifiers leave the DCR (*KsKaKp*) or (*KsKpKa*).
 7)	Not share user specific matches with clients and only share aggregate match rates for the entire list.
 8)	Limit cross party learning by following the below guidelines:
-    a)	Match rates above 85% are not revealed and are shown as >85%.
-    b)	Match rates are returned at a granularity of a whole percent or greater (can also consider adding noise to the match rates).
-    c)	A minimum list size of 1000 users per list (pre-match).
-    d)	If possible, detect set differences of <50 (if there are multiple lists) for each unique advertiser-publisher pairing.
-    e)	Other mitigations may include measures like randomizing inputs and outputs, bloom filters, adding noise, and tracking privacy budgets.
+  - a)	Match rates above 85% are not revealed and are shown as >85%.
+  - b)	Match rates are returned at a granularity of a whole percent or greater (can also consider adding noise to the match rates).
+  - c)	A minimum list size of 1000 users per list (pre-match).
+  - d)	If possible, detect set differences of <50 (if there are multiple lists) for each unique advertiser-publisher pairing.
+  - e)	Other mitigations may include measures like randomizing inputs and outputs, bloom filters, adding noise, and tracking privacy budgets.
 9)	Ensure that *Ks* is unique for every publisher. This is especially critical when the advertiser and publisher are using the same DCR.
 10)	Must not use the same matching scope for matches longer than 30 days apart. For instance, the DCR should invalidate PAIR matches every 30 days by rotating *Ks* every 30 days.
 11)	Honor user opt outs in the advertiser list by enabling the advertiser to remove records from their lists and then passing on those changes to the DSP. This is done daily as needed.
