@@ -26,8 +26,8 @@ Andrei Lapets, ex-Magnite; Andrew Knox, ex- Decentriq; Bosko Milekic, Optable; C
 
 Shailley Singh, EVP Product & COO, IAB Tech Lab
 
-Miguel Morales, Director Addressability & Privacy Enhancing Technologies (PETs)
- 
+Rowena Lam, Senior Director, Privacy & Data, IAB Tech Lab
+
 ### About IAB Tech Lab
 
 The IAB Technology Laboratory is a nonprofit research and development consortium charged with producing and helping companies implement global industry technical standards and solutions. The goal of the Tech Lab is to reduce friction associated with the digital advertising and marketing supply chain while contributing to the safe growth of an industry.
