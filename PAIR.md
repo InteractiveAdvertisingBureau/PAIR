@@ -214,7 +214,7 @@ Below is the brief outline of the protocol, roles of Advertiser, Publishers, SSP
 
 - Advertiser and Publisher data instances share encrypted lists with each other.
 
-![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/16f900a731d4310b9eb1fcf1bcde246a0880d5e6/assets/Step%204%3A%20Share%20encrypted%20lists.png)
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/2f58b47a822614559c7fe3d14739bdeb44929653/assets/Step%204%3A%20Share%20Encrypted%20List.png)
 
  **Step 5: DCR generates the PAIR ID**
  
@@ -250,7 +250,7 @@ Below is the brief outline of the protocol, roles of Advertiser, Publishers, SSP
 - DSP can access the list from DCR with appropriate advertiser permissions
 - DSP cannot download the list from DCR - only access based on permissions	
 
- ![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/6c08a61b3143046b2062cfdb0b173bc24f2db334/assets/Step%208%3A%20Publisher%20Identifiers%20shared%20with%20DSP.png)
+ ![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/83fb5c8c7d1c0d8b600b7b4c1e7cf9970a3f1883/assets/Step%208%3A%20Publisher%20Identifiers%20shared%20w%20DSP.png)
  
 **Step 9: Programmatic Activation**
 - Publisher uses match rates in step 7 to enhance their user id with Publisher Identifier (Base64-encoded encrypted *KsKp*)
@@ -258,7 +258,7 @@ Below is the brief outline of the protocol, roles of Advertiser, Publishers, SSP
 - Advertisers can pull PAIR lists for their campaigns and provide access to DSP
 - DSP can look up and match publisher ID for bid decisioning
 
-![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/b4aed6096935e8cd4ddedd4beb2dc5e280f2a279/assets/Step%209%3A%20Programmatic%20Activation.png)
+![](https://github.com/InteractiveAdvertisingBureau/PAIR/blob/822609f53167f3180a55878581df5bf664053815/assets/Step%209%3A%20Programmatic%20Activation%201.png)
 
 #### Base64 Encoding Publisher Identifiers
 
